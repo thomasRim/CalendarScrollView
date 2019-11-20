@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import CalendarScrollView
 
 class ViewController: UIViewController {
 
+    @IBOutlet fileprivate weak var calendarScrollView: CalendarScrollView!
+    
+    @IBOutlet fileprivate weak var calendarHeightConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let settings = CalendarSettings()
+        settings.begin = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: Date())))!
+        settings.generateMonths()
+        settings.day = Day(date: Date())
+        settings.local = Locale(identifier: "ru_RU")
+        settings.selectedRoundInset = 1
+        settings.style.prevArrowImage = UIImage(named: "prev")
+        settings.style.nextArrowImage = UIImage(named: "next")
+        settings.style.weekHeaderTextColor = .lightGray
+        settings.style.daySelectedRoundColor = .orange
+        calendarScrollView.settings = settings
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        calendarHeightConstraint.constant = calendarScrollView.estimateCalendarHeight()
     }
-
 }
 

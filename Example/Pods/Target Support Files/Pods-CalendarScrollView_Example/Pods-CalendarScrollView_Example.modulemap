@@ -1,0 +1,6 @@
+framework module Pods_CalendarScrollView_Example {
+  umbrella header "Pods-CalendarScrollView_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
