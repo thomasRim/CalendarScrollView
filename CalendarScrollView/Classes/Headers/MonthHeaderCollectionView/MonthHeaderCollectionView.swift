@@ -211,9 +211,6 @@ class MonthHeaderCollectionView: UIView {
         prevButton.isEnabled = false
         nextButton.isEnabled = false
         DispatchQueue.main.async {
-            let offset = CGPoint(x: self.collectionView.contentOffset.x - self.collectionView.frame.width,
-                                 y: self.collectionView.contentOffset.y)
-            self.collectionView.setContentOffset(offset, animated: true)
             self.delegate?.prevMonth()
         }
     }
@@ -221,10 +218,9 @@ class MonthHeaderCollectionView: UIView {
     @objc fileprivate func nextMonthAction() {
         prevButton.isEnabled = false
         nextButton.isEnabled = false
-        let offset = CGPoint(x: self.collectionView.contentOffset.x + self.collectionView.frame.width,
-                             y: self.collectionView.contentOffset.y)
-        self.collectionView.setContentOffset(offset, animated: true)
-        self.delegate?.nextMonth()
+        DispatchQueue.main.async {
+            self.delegate?.nextMonth()
+        }
     }
     
     //MARK: - Able month
