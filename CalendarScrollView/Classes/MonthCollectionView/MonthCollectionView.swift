@@ -24,6 +24,7 @@ class MonthCollectionView: UIView {
     var dayWidth: CGFloat = 0.0
     
     fileprivate var didLoad = false
+    fileprivate var isenableScroll = true
     
     fileprivate let layout = Layout()
     
@@ -74,11 +75,13 @@ class MonthCollectionView: UIView {
     }
     
     func scrollToNextMonth() {
+        guard isenableScroll else { return }
         let offset = CGPoint(x: collectionView.contentOffset.x + collectionView.frame.width, y: collectionView.contentOffset.y)
         collectionView.setContentOffset(offset, animated: true)
     }
     
     func scrollToPrevMonth() {
+        guard isenableScroll else { return }
         let offset = CGPoint(x: collectionView.contentOffset.x - collectionView.frame.width, y: collectionView.contentOffset.y)
         collectionView.setContentOffset(offset, animated: true)
     }
@@ -134,6 +137,7 @@ extension MonthCollectionView: UICollectionViewDelegate {
             delegate?.scrollMonth(offset: scrollView.contentOffset)
         }
         prevOffset = collectionView.contentOffset
+        isenableScroll = Int(scrollView.contentOffset.x) % Int(scrollView.frame.width) == 0
     }
 }
 
