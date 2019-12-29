@@ -287,7 +287,7 @@ class DayView: UIView {
             }
         }
         
-        if day.date.isToday() {
+        if day.date.isToday(), day.inMonth {
             dateLabel.font = settings.style.currentDayFont
             dateLabel.textColor = settings.style.currentDayTextColor
         } else {
