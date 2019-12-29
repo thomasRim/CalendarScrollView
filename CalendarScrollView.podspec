@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CalendarScrollView'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Calendar designed to select a date or period.'
 
   s.homepage         = 'https://github.com/4egoshev/CalendarScrollView'
