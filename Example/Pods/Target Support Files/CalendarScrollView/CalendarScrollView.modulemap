@@ -1,6 +1,0 @@
-framework module CalendarScrollView {
-  umbrella header "CalendarScrollView-umbrella.h"
-
-  export *
-  module * { export * }
-}

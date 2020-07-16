@@ -1,0 +1,16 @@
+{
+  "name": "CalendarScrollView",
+  "version": "0.1.6",
+  "license": "MIT",
+  "summary": "Calendar designed to select a date or period. Slight updates by V.Yevdokimov",
+  "authors": {
+    "Aleksandr Chegoshev": "4egoshev@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/thomasRim/CalendarScrollView.git",
+    "branch": "master"
+  },
+  "platforms": {
+    "ios": "10.0"
+  }
+}
