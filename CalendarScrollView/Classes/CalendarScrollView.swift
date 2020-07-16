@@ -7,9 +7,13 @@
 
 import UIKit
 
-@objc public protocol CalendarScrollViewDelegate {
-    @objc optional func update(date: Date)
-    @objc optional func updatePeriod(startDate: Date, endDate: Date)
+public protocol CalendarScrollViewDelegate {
+    func update(date: Date)
+    func updatePeriod(startDate: Date, endDate: Date)
+}
+
+public extension CalendarScrollViewDelegate {
+	func updatePeriod(startDate: Date, endDate: Date) {}
 }
 
 public class CalendarScrollView: UIView {
@@ -154,7 +158,7 @@ extension CalendarScrollView: MonthCollectionViewDelegate {
         switch selectionType {
         case .day:
             settings.day = day
-            delegate?.update?(date: settings.day.date)
+            delegate?.update(date: settings.day.date)
         case .period:
             switch saveTurn {
             case .start:
@@ -189,7 +193,7 @@ extension CalendarScrollView: MonthCollectionViewDelegate {
                     settings.period.end = day
                 }
                 saveTurn = .start
-                delegate?.updatePeriod?(startDate: settings.period.start.date, endDate: settings.period.end.date)
+                delegate?.updatePeriod(startDate: settings.period.start.date, endDate: settings.period.end.date)
             default:
                 break
             }
