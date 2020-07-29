@@ -17,7 +17,9 @@ public class CalendarSettings {
     public var period = Period()
     public var selectionType: CalendarViewConfig.SelectionType? = .day
     public var selectionStyle: CalendarViewConfig.SelectionStyle = .round
+    
     public var ableDate: CalendarViewConfig.AbleDates = .next
+    public var ableDateNextAfter: Int = 1
     
     public var firstDateBuffer = [Date]()
     public var secondDateBuffer = [Date]()

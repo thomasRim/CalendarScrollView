@@ -275,13 +275,13 @@ class DayView: UIView {
             }
         case .nextAfter:
             if day.inMonth {
-                dateLabel.textColor = day.date.isLaterNextDate() ? settings.style.dayTextColor : settings.style.dayDisableTextColor
+                dateLabel.textColor = day.date.isLaterNextDate(dayPlus: settings.ableDateNextAfter) ? settings.style.dayTextColor : settings.style.dayDisableTextColor
             } else {
                 dateLabel.textColor = .clear
             }
         case .nextAfterWorkDays:
             if day.inMonth {
-                    dateLabel.textColor = day.date.isLaterNextDate() && day.date.isWorkDay() ? settings.style.dayTextColor : settings.style.dayDisableTextColor
+                    dateLabel.textColor = day.date.isLaterNextDate(dayPlus: settings.ableDateNextAfter) && day.date.isWorkDay() ? settings.style.dayTextColor : settings.style.dayDisableTextColor
                 } else {
                     dateLabel.textColor = .clear
             }
@@ -325,12 +325,12 @@ class DayView: UIView {
                 addGestureRecognizer(tap)
             }
         case .nextAfter:
-            if day.date.isCurrentMonth(date: currentMonth?.firstDate), day.date.isLaterNextDate() {
+            if day.date.isCurrentMonth(date: currentMonth?.firstDate), day.date.isLaterNextDate(dayPlus: settings.ableDateNextAfter) {
                 let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
                 addGestureRecognizer(tap)
             }
         case .nextAfterWorkDays:
-            if day.date.isCurrentMonth(date: currentMonth?.firstDate), day.date.isLaterNextDate(), day.date.isWorkDay() {
+            if day.date.isCurrentMonth(date: currentMonth?.firstDate), day.date.isLaterNextDate(dayPlus: settings.ableDateNextAfter), day.date.isWorkDay() {
                 let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction))
                 addGestureRecognizer(tap)
             }

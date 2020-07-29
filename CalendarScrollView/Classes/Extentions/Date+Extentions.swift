@@ -36,8 +36,8 @@ extension Date {
         return true
     }
     
-    func isLaterNextDate() -> Bool {
-        let result = Calendar.current.compare(self, to: Date().plus(1, component: .day), toGranularity: .day)
+    func isLaterNextDate(dayPlus:Int = 1) -> Bool {
+        let result = Calendar.current.compare(self, to: Date().plus(dayPlus, component: .day), toGranularity: .day)
         if result == .orderedAscending {
             return false
         }
