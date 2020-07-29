@@ -36,6 +36,8 @@ public class CalendarViewConfig {
     public enum AbleDates {
         case previous
         case next
+        case nextAfter
+        case nextAfterWorkDays
         case all
     }
     

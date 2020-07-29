@@ -235,7 +235,7 @@ class MonthHeaderCollectionView: UIView {
                 nextImageView.isHidden = false
                 nextButton.isEnabled = true
             }
-        case .next:
+            case .next, .nextAfter, .nextAfterWorkDays:
             if newMonth?.firstDate.isCurrentMonth() ?? false {
                 prevImageView.isHidden = true
                 prevButton.isEnabled = false

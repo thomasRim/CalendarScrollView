@@ -36,6 +36,14 @@ extension Date {
         return true
     }
     
+    func isLaterNextDate() -> Bool {
+        let result = Calendar.current.compare(self, to: Date().plus(1, component: .day), toGranularity: .day)
+        if result == .orderedAscending {
+            return false
+        }
+        return true
+    }
+    
     func isLaterCurrentDate() -> Bool {
         let result = Calendar.current.compare(self, to: Date(), toGranularity: .day)
         if result == .orderedAscending {
@@ -130,5 +138,12 @@ extension Date {
     
     func minus(_ value: Int, component: Calendar.Component) -> Date {
         return Calendar.current.date(byAdding: component, value: -value, to: self) ?? self
+    }
+}
+
+extension Date {
+    
+    func isWorkDay() -> Bool {
+        return !Calendar.current.isDateInWeekend(self)
     }
 }
