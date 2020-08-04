@@ -53,7 +53,7 @@ public class Month {
         repeat {
             var days = [Day]()
             for index in 0...6 {
-                let dayInset = Calendar.current.firstWeekday - 1
+                let dayInset = calendar.firstWeekday - 1
                 guard let dayInWeek = calendar.date(byAdding: .day, value: +index - dayInset, to: weekDay) else { continue }
                 let day = Day(date: dayInWeek, inMonth: inMoth(dayInWeek))
                 days.append(day)

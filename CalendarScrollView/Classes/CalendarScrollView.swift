@@ -23,7 +23,7 @@ public class CalendarScrollView: UIView {
     public var settings = CalendarSettings()
     
     fileprivate var locale = Locale.current
-    fileprivate let calendar = Calendar.current
+    fileprivate var calendar = Calendar.current
     fileprivate var currentMonth: Month?
     fileprivate var currenMonthIndex: Int = 0
     fileprivate var currentMonthPosition: CalendarViewConfig.MonthPosition?
@@ -60,6 +60,7 @@ public class CalendarScrollView: UIView {
     }
     
     fileprivate func monthInset() -> Int {
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         let currentMonth = Calendar.current.component(.month, from: Date())
         let currentYear = Calendar.current.component(.year, from: Date())
         
