@@ -83,16 +83,6 @@ class MonthHeaderCollectionView: UIView {
         collectionView.contentOffset.x = offset.x * multiplier
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        guard let months = settings.months else { return }
-        for (index, month) in months.enumerated() {
-            if settings.day.date.isCurrentMonth(date: month.firstDate) {
-                collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: false)
-            }
-        }
-    }
-    
     fileprivate func setup() {
         multiplier = (collectionWidth - settings.arrawButtonWidth * 2 - settings.monthCollectionSideInset * 2) / collectionWidth
         addButtons()
